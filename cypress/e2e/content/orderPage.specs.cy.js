@@ -13,5 +13,6 @@ describe('Verificação da pagina order', () =>{
     it('Verifica se acessa a pagina corretamente', () =>{
         cy.login(dados.email, dados.password);
         cy.OrderVerify();
+        cy.logout();
     })
 })

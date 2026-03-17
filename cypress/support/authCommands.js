@@ -29,6 +29,6 @@ Cypress.Commands.add('login', (email, password) => {
     cy.contains('label', 'Email').next('input').type(email);
     cy.contains('label','Password').closest('.mb-4').find('input').type(password);
     cy.get("button[class='absolute right-3 top-1/2 -translate-y-1/2 text-[#666687] hover:text-[#32324d] transition']").click();
-    cy.get("button[class='w-full ds-btn-primary']").click();
-    cy.contains('h1', 'Dashboard' );
+    cy.contains('button', 'Sign in').click();
+    cy.contains('h1', 'Dashboard' ).should('have.text', 'Dashboard');
 })

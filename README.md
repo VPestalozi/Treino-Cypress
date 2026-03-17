@@ -47,9 +47,10 @@ npm install
 ```
 
 ### Execusão de testes
-
+```bash
 # Execução em modo interface (Interativo)
 npx cypress open
 
 # Execução em modo headless (Continuous Integration)
 npx cypress run
+```

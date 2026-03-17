@@ -1,4 +1,4 @@
-import '../support/authCommands'
+import '../../support/authCommands'
 
 describe('Usuarios devem realizar o login', () =>{
     let dados;
@@ -11,6 +11,5 @@ describe('Usuarios devem realizar o login', () =>{
 
     it('Realizar login com sucesso', () =>{
         cy.login(dados.email, dados.password);
-        //cy.contains("[type='email']")
     })
 })

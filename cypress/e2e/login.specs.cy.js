@@ -1,5 +1,16 @@
+import '../support/authCommands'
+
 describe('Usuarios devem realizar o login', () =>{
-    it('atraves da pagina da aplicação com sucesso', () =>{
-        cy.visit('https://phptravels.com/')
+    let dados;
+
+    beforeEach(() => {
+        cy.fixture('login').then((TempDados) =>{
+            dados = TempDados;
+        })
+    });
+
+    it('Realizar login com sucesso', () =>{
+        cy.login(dados.email, dados.password);
+        //cy.contains("[type='email']")
     })
 })

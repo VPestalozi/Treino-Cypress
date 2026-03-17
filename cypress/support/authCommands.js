@@ -29,7 +29,6 @@ Cypress.Commands.add('login', (email, password) => {
     cy.contains('p', 'Sign in to your account').should('have.text', 'Sign in to your account');
     cy.contains('label', 'Email').next('input').type(email);
     cy.contains('label','Password').closest('.mb-4').find('input').type(password);
-    cy.get("button[class='absolute right-3 top-1/2 -translate-y-1/2 text-[#666687] hover:text-[#32324d] transition']").click();
     cy.contains('button', 'Sign in').click();
     cy.contains('h1', 'Dashboard' ).should('have.text', 'Dashboard');
 })
@@ -37,7 +36,7 @@ Cypress.Commands.add('login', (email, password) => {
 Cypress.Commands.add('logout', () => {
     cy.visit('https://app.phptravels.com/dashboard');
     cy.contains('h1', 'Dashboard' ).should('have.text', 'Dashboard');
-    cy.get("button[class='lg:hidden p-1.5 -ml-1 text-[#666687] hover:bg-[#f6f6f9] rounded transition']").click();
+    cy.contains('div', 'Dashboard').parent().find('button').click();
     cy.contains('p','client').click();
     cy.contains('span','Sign Out').click();
     cy.contains('p', 'Sign in to your account').should('have.text', 'Sign in to your account');

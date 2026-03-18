@@ -23,21 +23,17 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import { loginHelper } from './helpers/auth/login_helper'
+import { logoutHelper } from './helpers/auth/logout_helper'
 
 Cypress.Commands.add('login', (email, password) => {
-    cy.visit('https://app.phptravels.com/login');
-    cy.contains('p', 'Sign in to your account').should('have.text', 'Sign in to your account');
-    cy.contains('label', 'Email').next('input').type(email);
-    cy.contains('label','Password').closest('.mb-4').find('input').type(password);
-    cy.contains('button', 'Sign in').click();
-    cy.contains('h1', 'Dashboard' ).should('have.text', 'Dashboard');
+    loginHelper(email, password);
 })
 
 Cypress.Commands.add('logout', () => {
-    cy.visit('https://app.phptravels.com/dashboard');
-    cy.contains('h1', 'Dashboard' ).should('have.text', 'Dashboard');
-    cy.contains('div', 'Dashboard').parent().find('button').click();
-    cy.contains('p','client').click();
-    cy.contains('span','Sign Out').click();
-    cy.contains('p', 'Sign in to your account').should('have.text', 'Sign in to your account');
+    //Garantimos o estado inicial do nosso teste
+    loginHelper(email, password)
+
+    //Realiza a ação
+    logoutHelper()
 })

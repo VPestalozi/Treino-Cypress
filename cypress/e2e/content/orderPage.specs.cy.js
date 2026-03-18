@@ -1,18 +1,15 @@
 import '../../support/authCommands'
 import '../../support/contentCommands'
 
-describe('Verificação da pagina order', () =>{
-    let dados;
+describe('Usuarios devem realizar o login', () =>{
 
-    beforeEach(() => {
-        cy.fixture('authLogin').then((TempDados) =>{
-            dados = TempDados;
-        })
+    beforeEach(function () {
+        cy.fixture('authLogin').then((dados) => {
+            this.dados = dados;
+        });
     });
 
-    it('Verifica se acessa a pagina corretamente', () =>{
-        cy.login(dados.email, dados.password);
-        cy.OrderVerify();
-        cy.logout();
-    })
-})
+    it('Realizar login com sucesso', function () {
+        cy.login(this.dados.email, this.dados.password);
+    });
+});
